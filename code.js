@@ -41,6 +41,11 @@ function shuffleDeck() {
 }
 
 function startGame() {
+    hidden = deck.pop(Math.floor(Math.random() * deck.length));
+    dealerSum += getValue(hidden);
+    dealerAceCount += checkAce(hidden);
+
+    document.getElementById("seen").src = "./cards/" + hidden + ".png";
     document.getElementById("hit").addEventListener("click", hit);
     document.getElementById("stay").addEventListener("click", stay);
     document.getElementById("restart").addEventListener("click", restart);
@@ -75,9 +80,6 @@ function hit() {
 }
 
 function stay() {
-    hidden = deck.pop(Math.floor(Math.random() * deck.length));
-    dealerSum += getValue(hidden);
-    dealerAceCount += checkAce(hidden);
     // console.log(hidden);
     // console.log(dealerSum);
     while (dealerSum < 17) {
