@@ -46,6 +46,7 @@ function startGame() {
     dealerAceCount += checkAce(hidden);
 
     document.getElementById("seen").src = "./cards/" + hidden + ".png";
+
     document.getElementById("hit").addEventListener("click", hit);
     document.getElementById("stay").addEventListener("click", stay);
     document.getElementById("restart").addEventListener("click", restart);
