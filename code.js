@@ -132,6 +132,7 @@ function stay() {
     document.getElementById("your-sum").innerText = yourSum;
     document.getElementById("results").innerText = message;
     document.getElementById("tokens").innerText = tokenCount;
+    console.log(tokenCount);
 }
 
 function getValue(card) {
