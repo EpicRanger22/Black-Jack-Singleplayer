@@ -107,9 +107,12 @@ function stay() {
     let message = "";
     if (yourSum > 21) {
         message = "You Lose!";
+        tokenCount -= tokensUsed;
     }
     else if (dealerSum > 21) {
         message = "You win!";
+        tokensUsed *= 2;
+        tokenCount += tokensUsed;
     }
     //both you and dealer <= 21
     else if (yourSum == dealerSum) {
@@ -190,4 +193,8 @@ function next() {
     yourCardImg.src = "./cards/BACK.png";
     yourCardImg.id = "first-card";
     document.getElementById("your-cards").append(yourCardImg);
+    
+    document.getElementById("dealer-sum").innerText = "";
+    document.getElementById("your-sum").innerText = "";
+    document.getElementById("results").innerText = "";
 }   
