@@ -84,8 +84,9 @@ function stay() {
     hidden = deck.pop(Math.floor(Math.random() * deck.length));
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
-    // console.log(hidden);
-    // console.log(dealerSum);
+    
+    document.getElementById("hidden").src = "./cards/" + hidden + ".png";
+    
     while (dealerSum < 17) {
         //<img src="./cards/4-C.png">
         let cardImg = document.createElement("img");
@@ -100,7 +101,6 @@ function stay() {
     yourSum = reduceAce(yourSum, yourAceCount);
 
     canHit = false;
-    document.getElementById("hidden").src = "./cards/" + hidden + ".png";
 
     let message = "";
     if (yourSum > 21) {
