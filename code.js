@@ -42,11 +42,6 @@ function shuffleDeck() {
 
 function startGame() {
     tokensUsed = prompt("How many tokens?");
-    sleep(1000);
-    while(tokensUsed > tokenCount or tokensUsed <= 0) {
-        tokensUsed = prompt("How many tokens?");
-        sleep(1000);
-    }
     
     let seen = deck.pop(Math.floor(Math.random() * deck.length));
     dealerSum += getValue(seen);
@@ -204,7 +199,3 @@ function next() {
     
     reset();
 }   
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
