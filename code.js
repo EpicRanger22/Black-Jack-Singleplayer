@@ -14,9 +14,7 @@ let firstHit = true;
 let canHit = true;
 
 window.onload = function() {
-    buildDeck();
-    shuffleDeck();
-    startGame();
+    reset();
 }
 
 function buildDeck() {
@@ -162,7 +160,7 @@ function reduceAce(playerSum, playerAceCount) {
     return playerSum;
 }
 
-function next() {
+function reset() {
     dealerSum = 0;
     yourSum = 0;
     dealerAceCount = 0;
@@ -174,4 +172,22 @@ function next() {
     buildDeck();
     shuffleDeck();
     startGame();
+}
+
+function next() {
+    reset();
+    document.getElementById("dealer-cards").innerHTML = "";
+    let cardImg = document.createElement("img");
+    cardImg.src = "./cards/BACK.png";
+    cardImg.id = "hidden";
+    document.getElementById("dealer-cards").append(cardImg);
+    let cardSeenImg = document.createElement("img");
+    cardSeenImg.src = "";
+    cardSeenImg.id = "seen";
+    document.getElementById("dealer-cards").append(cardSeenImg);
+    document.getElementById("your-cards").innerHTML = "";
+    let yourCardImg = document.createElement("img");
+    yourCardImg.src = "./cards/BACK.png";
+    yourCardImg.id = "first-card";
+    document.getElementById("your-cards").append(yourCardImg);
 }   
