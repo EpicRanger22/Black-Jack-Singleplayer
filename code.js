@@ -42,6 +42,9 @@ function shuffleDeck() {
 
 function startGame() {
     tokensUsed = prompt("How many tokens?");
+    while(tokensUsed > tokenCount || tokensUsed <= 0) {
+        tokensUsed = prompt("How many tokens?");
+    }
     
     let seen = deck.pop(Math.floor(Math.random() * deck.length));
     dealerSum += getValue(seen);
