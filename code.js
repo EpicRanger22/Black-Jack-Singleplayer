@@ -178,7 +178,6 @@ function reset() {
 }
 
 function next() {
-    reset();
     document.getElementById("dealer-cards").innerHTML = "";
     let cardImg = document.createElement("img");
     cardImg.src = "./cards/BACK.png";
@@ -197,4 +196,6 @@ function next() {
     document.getElementById("dealer-sum").innerText = "";
     document.getElementById("your-sum").innerText = "";
     document.getElementById("results").innerText = "";
+    
+    reset();
 }   
