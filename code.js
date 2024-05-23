@@ -27,7 +27,6 @@ function buildDeck() {
             deck.push(values[j] + "-" + types[i]);
         }
     }
-    // console.log(deck);
 }
 
 function shuffleDeck() {
@@ -55,7 +54,8 @@ function startGame() {
     document.getElementById("hit").addEventListener("click", hit);
     document.getElementById("stay").addEventListener("click", stay);
     document.getElementById("next").addEventListener("click", next);
-    document.getElementById("tokens").innerText = tokenCount;
+    document.getElementById("tokens").innerText = "";
+    document.getElementById("tokens").innerText = "" + tokenCount;
 }
 
 function hit() {
@@ -131,8 +131,8 @@ function stay() {
     document.getElementById("dealer-sum").innerText = dealerSum;
     document.getElementById("your-sum").innerText = yourSum;
     document.getElementById("results").innerText = message;
-    document.getElementById("tokens").innerText = tokenCount;
-    console.log(tokenCount);
+    document.getElementById("tokens").innerText = "";
+    document.getElementById("tokens").innerText = "" + tokenCount;
 }
 
 function getValue(card) {
