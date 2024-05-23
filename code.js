@@ -110,22 +110,22 @@ function stay() {
     let message = "";
     if (yourSum > 21) {
         message = "You Lose!";
-        tokenCount -= tokensUsed;
+        tokenCount = parseInt(tokenCount,10) - parseInt(tokensUsed,10);
     }
     else if (dealerSum > 21) {
         message = "You win!";
-        tokenCount += tokensUsed;
+        tokenCount = parseInt(tokenCount,10) + parseInt(tokensUsed,10);
     }
     else if (yourSum == dealerSum) {
         message = "Tie!";
     }
     else if (yourSum > dealerSum) {
         message = "You Win!";
-        tokenCount += tokensUsed;
+        tokenCount = parseInt(tokenCount,10) + parseInt(tokensUsed,10);
     }
     else if (yourSum < dealerSum) {
         message = "You Lose!";
-        tokenCount -= tokensUsed;
+        tokenCount = parseInt(tokenCount,10) - parseInt(tokensUsed,10);
     }
 
     document.getElementById("dealer-sum").innerText = dealerSum;
