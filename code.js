@@ -114,18 +114,14 @@ function stay() {
     }
     else if (dealerSum > 21) {
         message = "You win!";
-        tokensUsed *= 2;
         tokenCount += tokensUsed;
     }
-    //both you and dealer <= 21
     else if (yourSum == dealerSum) {
         message = "Tie!";
     }
     else if (yourSum > dealerSum) {
         message = "You Win!";
-        tokensUsed *= 2;
         tokenCount += tokensUsed;
-        
     }
     else if (yourSum < dealerSum) {
         message = "You Lose!";
