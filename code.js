@@ -56,7 +56,7 @@ function startGame() {
     document.getElementById("stay").addEventListener("click", stay);
     document.getElementById("next").addEventListener("click", next);
     document.getElementById("tokens").innerText = "";
-    document.getElementById("tokens").innerText = "" + tokenCount;
+    document.getElementById("tokens").innerText = "Tokens: " + tokenCount;
 }
 
 function hit() {
@@ -128,6 +128,11 @@ function stay() {
     }
     else if (yourSum > dealerSum) {
         message = "You Win!";
+        var element = document.getElementById("theElementId");
+        var numberOfChildren = element.getElementsByTagName('*').length;
+        if(numberOfChildren == 2 && yourSum == 21) {
+            tokenCount = round(parseInt(tokenCount,10) * 2.5);
+        }
         tokenCount = parseInt(tokenCount,10) + parseInt(tokensUsed,10);
     }
     else if (yourSum < dealerSum) {
@@ -139,7 +144,7 @@ function stay() {
     document.getElementById("your-sum").innerText = yourSum;
     document.getElementById("results").innerText = message;
     document.getElementById("tokens").innerText = "";
-    document.getElementById("tokens").innerText = "" + tokenCount;
+    document.getElementById("tokens").innerText = "Tokens: " + tokenCount;
 }
 
 function getValue(card) {
