@@ -12,6 +12,7 @@ let tokensUsed = 0;
 
 let firstHit = true;
 let canHit = true;
+let canStay = true;
 
 window.onload = function() {
     reset();
@@ -79,7 +80,7 @@ function hit() {
 
     firstHit = false;
 
-    if (reduceAce(yourSum, yourAceCount) > 21) {
+    if (reduceAce(yourSum, yourAceCount) >= 21) {
         canHit = false;
         stay();
     }
@@ -87,6 +88,12 @@ function hit() {
 }
 
 function stay() {
+    if(!canStay){
+        return;
+    }
+
+    canStay = false;
+    
     hidden = deck.pop(Math.floor(Math.random() * deck.length));
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
@@ -172,6 +179,7 @@ function reset() {
     deck = null;
     firstHit = true;
     canHit = true;
+    canStay = true;
     buildDeck();
     shuffleDeck();
     startGame();
