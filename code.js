@@ -131,7 +131,7 @@ function stay() {
         var element = document.getElementById("your-cards");
         var numberOfChildren = element.getElementsByTagName('*').length;
         if(numberOfChildren == 2 && yourSum == 21) {
-            tokenCount = Math.round(parseInt(tokenCount,10) * 2.5);
+            tokenCount = Math.round(parseInt(tokenCount,10) * 1.5);
         }
         tokenCount = parseInt(tokenCount,10) + parseInt(tokensUsed,10);
     }
