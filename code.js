@@ -128,8 +128,8 @@ function stay() {
     }
     else if (yourSum > dealerSum) {
         message = "You Win!";
-        var element = document.getElementById("theElementId");
-        var numberOfChildren = element.getElementsByTagName('').length;
+        var element = document.getElementById("your-cards");
+        var numberOfChildren = element.getElementsByTagName('*').length;
         if(numberOfChildren == 2 && yourSum == 21) {
             tokenCount = round(parseInt(tokenCount,10) * 2.5);
         }
