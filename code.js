@@ -17,7 +17,9 @@ let canStay = true;
 let cardsUsed = 0;
 
 window.onload = function() {
-    reset();
+    buildDeck();      
+    shuffleDeck();
+    startGame();
 }
 
 function buildDeck() {
