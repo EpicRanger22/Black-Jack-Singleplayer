@@ -160,7 +160,10 @@ function getValue(card) {
 
     if (isNaN(value)) { //A J Q K
         if (value == "A") {
-            return 11;
+            if(dealerAceCount > 0 || yourAceCount > 0)
+                return 1;
+            else
+                return 11;
         }
         return 10;
     }
