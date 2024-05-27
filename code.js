@@ -15,6 +15,7 @@ let canHit = true;
 let canStay = true;
 
 let cardsUsed = 0;
+let cardsToShuffle = 26;
 
 window.onload = function() {
     buildDeck();      
@@ -44,6 +45,7 @@ function shuffleDeck() {
 }
 
 function startGame() {
+    console.log("CARDS USED: " + cardsUsed);
     tokensUsed = prompt("How many tokens?");
     while(tokensUsed > tokenCount || tokensUsed <= 0) {
         tokensUsed = prompt("How many tokens?");
@@ -117,6 +119,17 @@ function stay() {
     }
 
     dealerSum = reduceAce(dealerSum, dealerAceCount);
+    
+    while (dealerSum < 17) {
+        let cardImg = document.createElement("img");
+        let card = deck.pop();
+        cardImg.src = "./cards/" + card + ".png";
+        dealerSum += getValue(card);
+        dealerAceCount += checkAce(card);
+        document.getElementById("dealer-cards").append(cardImg);
+        cardsUsed += 1;
+    }
+    
     yourSum = reduceAce(yourSum, yourAceCount);
 
     canHit = false;
@@ -160,10 +173,7 @@ function getValue(card) {
 
     if (isNaN(value)) { //A J Q K
         if (value == "A") {
-            if(dealerAceCount > 0 || yourAceCount > 0)
-                return 1;
-            else
-                return 11;
+            return 11;
         }
         return 10;
     }
@@ -199,9 +209,10 @@ function reset() {
     canHit = true;
     canStay = true;
     // TODO: ADD +- 5 ish cards to cardUsed if check
-    if(cardsUsed >= 26) {
+    if(cardsUsed >= cardsToShuffle) {
         buildDeck();
         shuffleDeck();
+        console.log("SHUFFLING");        
     }
     startGame();
 }
