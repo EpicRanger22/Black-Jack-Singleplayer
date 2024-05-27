@@ -49,7 +49,7 @@ function startGame() {
         tokensUsed = prompt("How many tokens?");
     }
     
-    let seen = deck.pop(Math.floor(Math.random() * deck.length));
+    let seen = deck.pop();
     cardsUsed += 1;
     dealerSum += getValue(seen);
     dealerAceCount += checkAce(seen);
@@ -76,7 +76,7 @@ function hit() {
     else {
         cardImg = document.createElement("img");
     }
-    card = deck.pop(Math.floor(Math.random() * deck.length));
+    card = deck.pop();
     cardImg.src = "./cards/" + card + ".png";
     yourSum += getValue(card);
     yourAceCount += checkAce(card);
@@ -99,7 +99,7 @@ function stay() {
 
     canStay = false;
     
-    hidden = deck.pop(Math.floor(Math.random() * deck.length));
+    hidden = deck.pop();
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
     cardsUsed += 1;
@@ -108,7 +108,7 @@ function stay() {
     
     while (dealerSum < 17) {
         let cardImg = document.createElement("img");
-        let card = deck.pop(Math.floor(Math.random() * deck.length));
+        let card = deck.pop();
         cardImg.src = "./cards/" + card + ".png";
         dealerSum += getValue(card);
         dealerAceCount += checkAce(card);
@@ -195,7 +195,6 @@ function reset() {
     dealerAceCount = 0;
     yourAceCount = 0;
     hidden = null;
-    deck = null;
     firstHit = true;
     canHit = true;
     canStay = true;
