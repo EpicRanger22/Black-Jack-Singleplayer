@@ -42,6 +42,7 @@ function shuffleDeck() {
         deck[i] = deck[j];
         deck[j] = temp;
     }
+    console.log(deck);
 }
 
 function startGame() {
@@ -213,6 +214,7 @@ function reset() {
         buildDeck();
         shuffleDeck();
         console.log("SHUFFLING");        
+        cardsUsed = 0;
     }
     startGame();
 }
