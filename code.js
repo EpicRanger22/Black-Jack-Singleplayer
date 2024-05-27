@@ -14,6 +14,8 @@ let firstHit = true;
 let canHit = true;
 let canStay = true;
 
+let cardsUsed = 0;
+
 window.onload = function() {
     reset();
 }
@@ -37,7 +39,6 @@ function shuffleDeck() {
         deck[i] = deck[j];
         deck[j] = temp;
     }
-    console.log(deck);
 }
 
 function startGame() {
@@ -47,6 +48,7 @@ function startGame() {
     }
     
     let seen = deck.pop(Math.floor(Math.random() * deck.length));
+    cardsUsed += 1;
     dealerSum += getValue(seen);
     dealerAceCount += checkAce(seen);
 
@@ -77,6 +79,7 @@ function hit() {
     yourSum += getValue(card);
     yourAceCount += checkAce(card);
     document.getElementById("your-cards").append(cardImg);
+    cardsUsed += 1;
 
     firstHit = false;
 
@@ -97,6 +100,7 @@ function stay() {
     hidden = deck.pop(Math.floor(Math.random() * deck.length));
     dealerSum += getValue(hidden);
     dealerAceCount += checkAce(hidden);
+    cardsUsed += 1;
     
     document.getElementById("hidden").src = "./cards/" + hidden + ".png";
     
@@ -107,6 +111,7 @@ function stay() {
         dealerSum += getValue(card);
         dealerAceCount += checkAce(card);
         document.getElementById("dealer-cards").append(cardImg);
+        cardsUsed += 1;
     }
 
     dealerSum = reduceAce(dealerSum, dealerAceCount);
@@ -175,6 +180,10 @@ function reduceAce(playerSum, playerAceCount) {
     return playerSum;
 }
 
+function split() {
+    // TODO: SPLITTING
+}
+
 function reset() {
     dealerSum = 0;
     yourSum = 0;
@@ -185,8 +194,11 @@ function reset() {
     firstHit = true;
     canHit = true;
     canStay = true;
-    buildDeck();
-    shuffleDeck();
+    // TODO: ADD +- 5 ish cards to cardUsed if check
+    if(cardsUsed >= 26) {
+        buildDeck();
+        shuffleDeck();
+    }
     startGame();
 }
 
