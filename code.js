@@ -48,7 +48,8 @@ function shuffleDeck() {
 function startGame() {
     console.log("CARDS USED: " + cardsUsed);
     tokensUsed = prompt("How many tokens?");
-    while(tokensUsed > tokenCount || tokensUsed <= 0 || !typeof(tokensUsed) === "number") {
+    console.log(typeof tokensUsed);
+    while(tokensUsed > tokenCount || tokensUsed <= 0 || !typeof tokensUsed === "number") {
         tokensUsed = prompt("How many tokens?");
     }
     tokensUsed = Math.round(tokensUsed);
