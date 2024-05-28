@@ -222,6 +222,9 @@ function reset() {
 }
 
 function next() {
+    if(yourSum > 0 && canStay){
+        return;
+    }
     document.getElementById("dealer-cards").innerHTML = "";
     let cardImg = document.createElement("img");
     cardImg.src = "./cards/BACK.png";
